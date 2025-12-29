@@ -1,0 +1,24 @@
+# dependencies
+node_modules
+
+
+# build artifacts
+.next
+
+# env files
+.env
+.env.local
+.env.production
+
+# large files
+public/Images
+data_keys.gz
+data_keys.txt
+
+
+# ignore git metadata
+.git
+.gitignore
+Dockerfile
+
+

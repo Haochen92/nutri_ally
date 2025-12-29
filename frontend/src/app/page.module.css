@@ -1,0 +1,41 @@
+.page {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 80px;
+  gap: 64px;
+  position: relative;
+}
+
+.main {
+  flex-direction: column;
+  gap: 32px;
+  width:40svw;
+  height:50svh;
+  background-color: rgba(255,255,255,0.7);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.headline{
+  gap:10px;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items:center;
+  padding: 12px;
+}
+
+.tagline{
+  gap:10px;
+  flex-direction:row;
+  justify-content: center;
+  align-items:center;
+  padding: 12px;
+}
+
+.buttonContainer{
+  flex-direction: row;
+  padding: 12px;
+  gap: 8px;
+}

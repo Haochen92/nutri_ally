@@ -1,0 +1,22 @@
+node_modules/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+build/
+secrets/
+
+# Python virtual environments
+venv/
+.env.*/
+pythonenv/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Project data
+data/
+
+# Large frontend images
+frontend/public/Images/

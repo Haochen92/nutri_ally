@@ -1,0 +1,32 @@
+model ProductNutrientsInfo {
+  code              String  @id @unique
+  nutriscore_grade  String
+  nutriscore_score  Float
+  nova_group        Float
+  serving_size      String
+  quantity          String
+  product_name_main String
+  image_url         String
+  energy            Float   @default(0)
+  proteins          Float   @default(0)
+  carbohydrates     Float   @default(0)
+  sugars            Float   @default(0) // Nullable field with default 0
+  fiber             Float   @default(0)
+  fat               Float   @default(0)
+  saturated_fat     Float   @default(0)
+  trans_fat         Float   @default(0)
+  sodium            Float   @default(0)
+  potassium         Float   @default(0)
+  calcium           Float   @default(0)
+  iron              Float   @default(0)
+  magnesium         Float   @default(0)
+  phosphorus        Float   @default(0)
+  zinc              Float   @default(0)
+  vitamin_c         Float   @default(0)
+  vitamin_a         Float   @default(0)
+  vitamin_d         Float   @default(0)
+  vitamin_b6        Float   @default(0)
+  vitamin_b12       Float   @default(0)
+
+  @@map("product_nutrients_info")
+}
