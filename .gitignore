@@ -20,3 +20,6 @@ data/
 
 # Large frontend images
 frontend/public/Images/
+
+# Large frontend data files
+frontend/data_keys.txt
