@@ -11,6 +11,8 @@ secrets/
 venv/
 .env.*/
 pythonenv/
+.venv/
+.poetry-cache/
 
 # Jupyter notebooks
 .ipynb_checkpoints/

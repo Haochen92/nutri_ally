@@ -1,0 +1,16 @@
+{
+  "terminal.integrated.defaultProfile.osx": "Workspace Zsh (clean)",
+  "terminal.integrated.profiles.osx": {
+    "Workspace Zsh (clean)": {
+      "path": "/bin/zsh",
+      "args": [
+        "-i",
+        "-f"
+      ],
+      "env": {
+        "POETRY_CACHE_DIR": "${workspaceFolder}/.poetry-cache",
+        "POETRY_VIRTUALENVS_PATH": "${workspaceFolder}/.venvs"
+      }
+    }
+  }
+}

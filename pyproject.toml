@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "nutri-ally"
+version = "0.1.0"
+description = "Nutri Ally RAG utilities"
+authors = ["liuhaochen"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+llama-index = "*"
+llama-index-embeddings-openai = "*"
+openai = "*"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
