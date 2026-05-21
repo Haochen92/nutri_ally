@@ -2,13 +2,13 @@
 
 import { Button, Loader, Stack, Text, Title } from '@mantine/core';
 import Cookies from 'js-cookie'
-import { useNutritionalInfo } from '@/components/utility/hooks';
+import useNutritionalInfo from '@/hooks/useNutritionalInfo';
 import NutrientIndicator from './_components/NutrientIndicator';
 import MacrosChart from './_components/MacrosChart';
 import MacroSlider from './_components/MacroSlider';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getDailyRecommendedIntake } from '@/components/interface/constants';
+import { getDailyRecommendedIntake } from '@/types/domain/constants';
 import classes from "./client.module.css";
 
 

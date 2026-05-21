@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Button, Collapse, Group, Stack, Table, Text, Title } from '@mantine/core';
 import classes from './client.module.css'
 import { useDisclosure } from '@mantine/hooks';
-import { microNutrients, macroNutrients, getDailyRecommendedIntake } from '@/components/interface/constants';
+import { microNutrients, macroNutrients, getDailyRecommendedIntake } from '@/types/domain/constants';
 
 export default function FoodInfoClient({foodData}) {
     const [opened, {toggle}] = useDisclosure(false);

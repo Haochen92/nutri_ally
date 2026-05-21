@@ -2,7 +2,7 @@
 
 import useSWR, {mutate} from "swr";
 import { useState, useEffect } from 'react';
-import { useBasket } from "@/components/utility/hooks";
+import useBasket from "@/hooks/useBasket";
 import { Select, Group, ActionIcon, Text } from "@mantine/core";
 import { IconTrash, IconPlus } from "@tabler/icons-react";
 import MacrosDisplay from "@/components/shared/MacrosDisplay";

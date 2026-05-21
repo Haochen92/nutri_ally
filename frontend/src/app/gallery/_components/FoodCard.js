@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ActionIcon, Group, NumberInput, Stack, Text, Title, Tooltip } from '@mantine/core'
-import { useBasket } from "@/components/utility/hooks";
+import useBasket from "@/hooks/useBasket";
 import { IconMilk, IconBowlChopsticks, IconToolsKitchen2 } from "@tabler/icons-react";
 import { useState } from 'react';
 import { notifications } from "@mantine/notifications";

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { fetchFoodInfo } from "../fetch_food_data/actions";
-import { microNutrients, macroNutrients } from "@/components/interface/constants";
+import { microNutrients, macroNutrients } from "@/types/domain/constants";
 
 const nutrients = [...macroNutrients, ...microNutrients];
 

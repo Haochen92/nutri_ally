@@ -1,11 +1,11 @@
 'use client'
 
 import MealCard from './_components/MealCard';
-import { useBasket } from '@/components/utility/hooks';
+import useBasket from '@/hooks/useBasket';
 import { Loader, Tabs, Text, Title } from '@mantine/core';
 import { IconMilk, IconBowlChopsticks, IconToolsKitchen2 } from '@tabler/icons-react'
 import { useState, useEffect } from 'react';
-import { useNutritionalInfo } from '@/components/utility/hooks';
+import useNutritionalInfo from '@/hooks/useNutritionalInfo';
 import classes from "./client.module.css";
 
 export default function MealCartClient({userId, isLoggedIn}) {

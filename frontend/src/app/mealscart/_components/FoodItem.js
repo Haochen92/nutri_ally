@@ -3,7 +3,7 @@
 import { ActionIcon, Group, NumberInput, Skeleton, Stack, Text } from '@mantine/core';
 import useSWR from 'swr';
 import { IconX } from '@tabler/icons-react';
-import { useBasket } from '@/components/utility/hooks';
+import useBasket from '@/hooks/useBasket';
 import MacrosDisplay from '@/components/shared/MacrosDisplay';
 import Link from 'next/link';
 import Image from 'next/image';
