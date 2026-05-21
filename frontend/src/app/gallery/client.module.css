@@ -1,25 +1,25 @@
 .toolbarCard {
-  padding: 0.75rem;
+  padding: var(--space-3);
 }
 
 .pageMeta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1rem;
-  border-radius: 18px;
-  background: rgba(255, 251, 244, 0.76);
-  border: 1px solid rgba(76, 98, 84, 0.12);
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface-glass-subtle);
+  border: var(--border-default);
   color: var(--app-muted);
   font-weight: 600;
 }
 
 .gridShell {
-  padding: clamp(1rem, 2vw, 1.5rem);
+  padding: var(--space-card);
 }
 
 .paginationBar {
   display: flex;
   justify-content: center;
-  padding: 1rem 0 0.5rem;
+  padding: var(--space-4) 0 var(--space-2);
 }
