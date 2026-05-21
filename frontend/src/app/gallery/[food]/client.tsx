@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Button, Collapse, Group, Stack, Table, Text, Title } from '@mantine/core';
+import { IconChevronDown } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { microNutrients, macroNutrients, getDailyRecommendedIntake } from '@/types/domain/constants';
 import type { FoodItem } from '@/types/domain';
@@ -81,8 +82,8 @@ export default function FoodInfoClient({ foodData }: FoodInfoClientProps) {
             tabularNums
             striped
             withTableBorder
-            horizontalSpacing="xs"
-            verticalSpacing="sm"
+            horizontalSpacing="sm"
+            verticalSpacing="xs"
           />
         </div>
         <div className={`section-card ${classes.tableCard}`}>
@@ -92,6 +93,15 @@ export default function FoodInfoClient({ foodData }: FoodInfoClientProps) {
             variant="subtle"
             color="dark"
             className={classes.collapseButton}
+            rightSection={
+              <IconChevronDown
+                size={18}
+                style={{
+                  transform: opened ? 'rotate(180deg)' : 'rotate(0)',
+                  transition: 'transform 200ms ease',
+                }}
+              />
+            }
           >
             <Title order={3}>Micro nutrients</Title>
           </Button>

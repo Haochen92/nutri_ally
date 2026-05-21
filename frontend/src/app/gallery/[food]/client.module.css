@@ -1,7 +1,7 @@
 .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
-    gap: var(--space-6);
+    gap: var(--space-5);
 }
 
 .imagePanel,
@@ -20,7 +20,7 @@
 
 .image {
     object-fit: contain;
-    padding: var(--space-6);
+    padding: var(--space-3);
 }
 
 .summaryPanel {
