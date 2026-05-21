@@ -94,9 +94,9 @@ export default function ProfileClient({ id, name, gender, birthday, height, weig
       <Flex className={classes.page}>
         <Flex className={`${classes.avatarContainer} section-card`}>
           {objectUrl ? (
-            <Avatar size={132} src={objectUrl} alt="profile" />
+            <Avatar size={96} src={objectUrl} alt="profile" />
           ) : (
-            <Avatar size={132} src="default-avatar.svg" alt="default avatar" />
+            <Avatar size={96} src="default-avatar.svg" alt="default avatar" />
           )}
           <Dropzone
             onDrop={handleDrop}
@@ -105,8 +105,8 @@ export default function ProfileClient({ id, name, gender, birthday, height, weig
             className={classes.dropzone}
           >
             <Stack align="center" justify="stretch">
-              <IconDownload size={72} color="black" />
-              <Text size="lg" fw={600}>Upload photos</Text>
+              <IconDownload size={40} color="var(--app-muted)" />
+              <Text size="md" fw={600}>Upload photos</Text>
               <Text size="sm" c="dimmed" ta="center">JPEG, PNG, GIF files under 5MB</Text>
             </Stack>
           </Dropzone>

@@ -33,13 +33,13 @@
 
 .button {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .ul {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
 }
 
 @media (max-width: 56rem) {

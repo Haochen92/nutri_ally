@@ -14,12 +14,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-4);
 }
 
 .dropzone {
     width: 100%;
-    min-height: 16rem;
+    min-height: 12rem;
     border-radius: var(--radius-lg);
     background: var(--surface-glass-subtle);
 }
