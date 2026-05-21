@@ -1,6 +1,6 @@
 .main {
-    gap: 1rem;
-    padding: clamp(1.25rem, 2vw, 1.75rem);
+    gap: var(--space-4);
+    padding: var(--space-card);
 }
 
 .copy {
