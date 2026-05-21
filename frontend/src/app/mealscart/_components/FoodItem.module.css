@@ -1,17 +1,17 @@
 .row {
-  padding: 0.85rem 1rem;
-  border-radius: 18px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
   background: var(--app-surface-strong);
-  border: 1px solid rgba(76, 98, 84, 0.08);
+  border: var(--border-subtle);
 }
 
 .thumb {
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
 }
 
 .details {
   flex: 1;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .title {

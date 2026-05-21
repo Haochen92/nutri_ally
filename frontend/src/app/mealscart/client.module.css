@@ -1,5 +1,5 @@
 .tabsShell {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .loader {
