@@ -59,11 +59,11 @@ export default function SearchBar() {
           <ActionIcon
             variant="light"
             color="leaf.6"
-            size="xl"
+            size="lg"
             radius="xl"
             onClick={() => setMenu((current) => !current)}
           >
-            <IconFilter size={24} />
+            <IconFilter size={20} />
           </ActionIcon>
         </Menu.Target>
         <Menu.Dropdown>
@@ -80,21 +80,21 @@ export default function SearchBar() {
       </Menu>
       <TextInput
         className={classes.searchBar}
-        leftSection={<IconSearch size={24} />}
+        leftSection={<IconSearch size={20} />}
         defaultValue={searchParams.get('search') || ''}
         onChange={handleChange}
         placeholder="Search by food name"
         radius="xl"
-        size="md"
+        size="sm"
       />
       <ActionIcon
         variant="light"
         color={sortValue ? 'sand.6' : 'leaf.6'}
-        size="xl"
+        size="lg"
         radius="xl"
         onClick={toggleSort}
       >
-        <IconArrowsSort size={24} />
+        <IconArrowsSort size={20} />
       </ActionIcon>
     </div>
   );

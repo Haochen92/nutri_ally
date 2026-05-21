@@ -43,7 +43,7 @@ export default function FoodListingClient({ productListInfo, totalPages, current
         <SearchBar />
       </div>
       <div className={`section-card ${classes.gridShell}`}>
-        <Grid gutter="xl">
+        <Grid gutter="lg">
           {productListInfo.map((item) => (
             <Grid.Col span={{ base: 12, sm: 6, md: 4, lg: 3, xl: 2 }} key={item.code}>
               <FoodCard foodData={item} />

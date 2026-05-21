@@ -16,9 +16,9 @@ interface FoodCardProps {
 }
 
 const mealTypes: { name: MealType; icon: React.ReactNode }[] = [
-  { name: 'breakfast', icon: <IconMilk size={24} /> },
-  { name: 'lunch', icon: <IconBowlChopsticks size={24} /> },
-  { name: 'dinner', icon: <IconToolsKitchen2 size={24} /> },
+  { name: 'breakfast', icon: <IconMilk size={20} /> },
+  { name: 'lunch', icon: <IconBowlChopsticks size={20} /> },
+  { name: 'dinner', icon: <IconToolsKitchen2 size={20} /> },
 ];
 
 export default function FoodCard({ foodData }: FoodCardProps) {
@@ -67,34 +67,32 @@ export default function FoodCard({ foodData }: FoodCardProps) {
         </div>
       </Link>
       <Stack gap="sm" className={classes.content}>
-        <Text className={classes.eyebrow}>Food item</Text>
         <Title order={3} className={classes.title} lineClamp={2}>
           {foodData.product_name_main}
         </Title>
         <div className={classes.macroPanel}>
           <MacrosDisplay data={foodData} />
         </div>
-        <Stack align="stretch" gap="xs">
-          <Text className={classes.servingLabel}>Serving size</Text>
+        <Group justify="space-between" w="100%" align="center" wrap="nowrap">
           <NumberInput
             allowNegative={false}
             max={10}
-            placeholder="serving size"
+            placeholder="Servings"
             value={serving}
             onChange={setServing}
-            size="sm"
-            w="100%"
+            size="xs"
+            w={88}
             decimalScale={1}
             radius="xl"
           />
-          <Group justify="space-between" w="100%">
+          <Group gap="xs" wrap="nowrap">
             {mealTypes.map((item) => (
               <Tooltip key={item.name} label={`Add to ${item.name}`}>
                 <ActionIcon
                   variant="light"
                   color="leaf.6"
                   radius="xl"
-                  size="lg"
+                  size="xl"
                   onClick={() => handleClick(item.name)}
                 >
                   {item.icon}
@@ -102,7 +100,7 @@ export default function FoodCard({ foodData }: FoodCardProps) {
               </Tooltip>
             ))}
           </Group>
-        </Stack>
+        </Group>
       </Stack>
     </Stack>
   );
