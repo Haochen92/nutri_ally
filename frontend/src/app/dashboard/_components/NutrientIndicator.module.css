@@ -1,0 +1,53 @@
+.card {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.9fr) minmax(0, 2fr);
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 24px;
+  background: rgba(255, 251, 244, 0.86);
+  border: 1px solid rgba(76, 98, 84, 0.12);
+  box-shadow: 0 14px 30px rgba(41, 58, 47, 0.08);
+}
+
+.valueBlock {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: var(--app-success-soft);
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.target {
+  color: var(--app-muted);
+  font-weight: 600;
+}
+
+.meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.label {
+  color: var(--app-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.progressValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 40rem) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}

@@ -22,14 +22,11 @@ export default function SavedMeals({userId, mealType}) {
         const selectedMeal = data.find(({meal_name}) => (
             meal_name === selectionName
         ))
-        console.log('data', data, typeof data)
         const foodItems = selectedMeal.meal_items;
-        console.log('fooditem', foodItems, typeof foodItems)
         foodItems.forEach(item => addItem({item: item, meal: mealType}));
     }
 
     const handleDelete = async (mealName) => {
-        console.log("meal name to be deleted: ", mealName)
         const payload = { userId: userId, mealName: mealName }
 
         const res = await fetch("/api/meals", {

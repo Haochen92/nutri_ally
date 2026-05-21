@@ -1,0 +1,23 @@
+.row {
+  padding: 0.85rem 1rem;
+  border-radius: 18px;
+  background: var(--app-surface-strong);
+  border: 1px solid rgba(76, 98, 84, 0.08);
+}
+
+.thumb {
+  border-radius: 14px;
+}
+
+.details {
+  flex: 1;
+  gap: 0.5rem;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.actions {
+  align-items: center;
+}

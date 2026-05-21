@@ -1,32 +1,37 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { NavLink, Group, AppShell, Avatar, Flex, Menu, MenuItem, Stack } from '@mantine/core';
+import { Avatar, AppShell, Button, Group, Menu, Stack, Text } from '@mantine/core';
 import { useClickOutside } from '@mantine/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconShoppingCart, IconCarambola, IconChefHat,
-         IconFavicon, IconLogin2, IconLogout2, IconUser } from '@tabler/icons-react';
+import { IconChefHat, IconCarambola, IconLogin2, IconLogout2, IconShoppingCart, IconUser } from '@tabler/icons-react';
 import { signOut} from "next-auth/react";
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation";
+import classes from "./NavbarClient.module.css";
 
-const NavbarLink = ({ href, icon, label }) => {
+const NavbarLink = ({ href, icon, label, active }) => {
     return (
-        <NavLink
-            w='auto'
+        <Button
             component={Link}
             href={href}
             leftSection={icon}
-            label={label}
-        />
+            variant={active ? "filled" : "subtle"}
+            color={active ? "leaf.6" : "dark"}
+            radius="xl"
+            size="md"
+            className={active ? classes.navLinkActive : classes.navLink}
+        >
+            {label}
+        </Button>
     )            
 }
 
 export default function NavbarClient({children, authenticated, imageBlob}) {
-
     const [ profileOpen, setProfileOpen ] = useState(false)
     const profileRef = useClickOutside(() => setProfileOpen(false))
-    const router = useRouter(); // Call useRouter at the top level of the component
+    const router = useRouter();
+    const pathname = usePathname();
     const [objectUrl, setObjectUrl]  = useState("")
 
     const appSignOut = async () => {
@@ -50,40 +55,51 @@ export default function NavbarClient({children, authenticated, imageBlob}) {
 
     return(
         <AppShell
-            header={{height:'88', offset:true}}
-            padding='sm'
+            header={{height: 92, offset: true}}
+            padding={0}
         >
-            <AppShell.Header>
+            <AppShell.Header className={classes.header}>
                 <Group 
-                    wrap='nowrap' justify='space-between'
-                    w='100%' gap='md' p='lg'
+                    className={`page-shell ${classes.headerInner}`}
+                    wrap='nowrap'
+                    justify='space-between'
+                    w='100%'
                 >
-                    <Image
-                        src='/favicon.webp'
-                        width={48}
-                        height={48}
-                        style={{borderRadius:'24px'}}
-                        alt='favicon'
-                    />
-                    <Group w='auto' justify='space-around'>
+                    <Group gap='sm' wrap='nowrap' className={classes.brand}>
+                        <div className={classes.brandMark}>
+                            <Image
+                                src='/favicon.webp'
+                                width={36}
+                                height={36}
+                                alt='favicon'
+                            />
+                        </div>
+                        <Stack gap={0} className={classes.brandCopy}>
+                            <Text className={classes.brandEyebrow}>Nutrition guidance</Text>
+                            <Text className={classes.brandName}>Nutri Ally</Text>
+                        </Stack>
+                    </Group>
+                    <Group gap='xs' wrap='nowrap' className={classes.links}>
                         {linkMap.map((item) => (
                             <NavbarLink 
                                 key={item.name}
                                 label={item.name}
                                 href={item.route}
                                 icon={item.icon}
+                                active={pathname === item.route || pathname.startsWith(`${item.route}/`)}
                             />
                         ))}
                     </Group>
                     <Group>
-                        <Menu open={profileOpen}>
+                        <Menu opened={profileOpen} onChange={setProfileOpen} position='bottom-end' shadow='md'>
                             <Menu.Target>
                                 <Avatar
                                     src={imageBlob && objectUrl ? objectUrl : '/default-avatar.svg'}
                                     radius='md'
                                     alt='my avatar'
                                     size={48}
-                                    onClick={() => setProfileOpen(true)}
+                                    onClick={() => setProfileOpen((current) => !current)}
+                                    className={classes.avatar}
                                 />
                             </Menu.Target>
                             <Menu.Dropdown ref={profileRef}>
@@ -118,7 +134,7 @@ export default function NavbarClient({children, authenticated, imageBlob}) {
                     
                 </Group>
             </AppShell.Header>
-            <AppShell.Main h='100vh'>
+            <AppShell.Main className='app-shell-main'>
                 {children}
             </AppShell.Main>
         </AppShell>

@@ -2,10 +2,11 @@
 
 import MealCard from './_components/MealCard';
 import { useBasket } from '@/components/utility/hooks';
-import { Tabs } from '@mantine/core';
+import { Loader, Tabs, Text, Title } from '@mantine/core';
 import { IconMilk, IconBowlChopsticks, IconToolsKitchen2 } from '@tabler/icons-react'
 import { useState, useEffect } from 'react';
 import { useNutritionalInfo } from '@/components/utility/hooks';
+import classes from "./client.module.css";
 
 export default function MealCartClient({userId, isLoggedIn}) {
     const { breakfast, lunch, dinner } = useBasket();
@@ -24,37 +25,58 @@ export default function MealCartClient({userId, isLoggedIn}) {
         }
     }, [mealNutrition])
 
-    if (!mealNutritionData) return <div>Loading...</div>
+    if (!mealNutritionData) {
+        return (
+            <section className="page-shell">
+                <div className={classes.loader}>
+                    <Loader color='leaf' size={44}/>
+                </div>
+            </section>
+        );
+    }
 
     return(
-        <Tabs defaultValue="breakfast" orientation='vertical' 
-                align='center' h='100%'>
-            <Tabs.List>
-                {mealsMapping.map(meal => (
-                    <Tabs.Tab 
-                        key={meal.name} 
-                        value={meal.name}
-                        leftSection={meal.icon}
-                    >
-                        {meal.name.toUpperCase()}
-                    </Tabs.Tab>
-                ))}
-            </Tabs.List>
-            {mealsMapping.map((meal) => (
-                <Tabs.Panel 
-                    key={meal.name} 
-                    value={meal.name}
-                    h='100%'
-                >
-                    <MealCard
-                        mealType={meal.name}
-                        foodArray={meal.data}
-                        userId={userId}
-                        mealNutrition={mealNutritionData[meal.name]}
-                        isLoggedIn={isLoggedIn}
-                    />
-                </Tabs.Panel>
-            ))}
-        </Tabs>
+        <section className="page-shell page-stack">
+            <div className="page-header">
+                <div className="page-heading">
+                    <Text className="eyebrow">Meal cart</Text>
+                    <Title className="page-title">Assemble meals before you save or review them</Title>
+                    <Text className="page-copy">
+                        Each meal keeps its own list and nutrition total, while the dashboard
+                        aggregates everything into daily progress.
+                    </Text>
+                </div>
+            </div>
+            <div className={`section-card ${classes.tabsShell}`}>
+                <Tabs defaultValue="breakfast" variant='pills' radius='xl' color='leaf.6'>
+                    <Tabs.List grow>
+                        {mealsMapping.map(meal => (
+                            <Tabs.Tab 
+                                key={meal.name} 
+                                value={meal.name}
+                                leftSection={meal.icon}
+                            >
+                                {meal.name.toUpperCase()}
+                            </Tabs.Tab>
+                        ))}
+                    </Tabs.List>
+                    {mealsMapping.map((meal) => (
+                        <Tabs.Panel 
+                            key={meal.name} 
+                            value={meal.name}
+                            pt='lg'
+                        >
+                            <MealCard
+                                mealType={meal.name}
+                                foodArray={meal.data}
+                                userId={userId}
+                                mealNutrition={mealNutritionData[meal.name]}
+                                isLoggedIn={isLoggedIn}
+                            />
+                        </Tabs.Panel>
+                    ))}
+                </Tabs>
+            </div>
+        </section>
     )
 }

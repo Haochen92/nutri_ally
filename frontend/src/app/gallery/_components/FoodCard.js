@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Stack, Group, Title, NumberInput, ActionIcon, Tooltip } from '@mantine/core'
+import { ActionIcon, Group, NumberInput, Stack, Text, Title, Tooltip } from '@mantine/core'
 import { useBasket } from "@/components/utility/hooks";
 import { IconMilk, IconBowlChopsticks, IconToolsKitchen2 } from "@tabler/icons-react";
 import { useState } from 'react';
@@ -52,33 +52,49 @@ export default function FoodCard({foodData}) {
         notifications.show({message: `meal successfully added to ${mealType}`})
     }
     return(
-        <Stack align='center' justify="center" className={classes.main} miw={240} maw={300}>
-            <Link href={`/gallery/${foodData.code}`}>
-                <Image className={classes.image} 
-                    src={`/${foodData.image_url}`} 
-                    alt={foodData.product_name_main || "product Image"}
-                    width={140}
-                    height={140}
-                />
+        <Stack className={classes.main} h='100%'>
+            <Link href={`/gallery/${foodData.code}`} className={classes.imageLink}>
+                <div className={classes.imageFrame}>
+                    <Image
+                        className={classes.image}
+                        src={`/${foodData.image_url}`}
+                        alt={foodData.product_name_main || "product Image"}
+                        fill
+                        sizes="(max-width: 48rem) 100vw, 18rem"
+                    />
+                </div>
             </Link>
-            <Stack style={{alignItems:"center", justifyContent:"center"}}>
-                <Title size={12} lineClamp={1}>{foodData.product_name_main}</Title>
-                <MacrosDisplay data={foodData}/>
-                <Stack align='center'>
+            <Stack gap='sm' className={classes.content}>
+                <Text className={classes.eyebrow}>Food item</Text>
+                <Title order={3} className={classes.title} lineClamp={2}>
+                    {foodData.product_name_main}
+                </Title>
+                <div className={classes.macroPanel}>
+                    <MacrosDisplay data={foodData}/>
+                </div>
+                <Stack align='stretch' gap='xs'>
+                    <Text className={classes.servingLabel}>Serving size</Text>
                     <NumberInput
                         allowNegative={false}
                         max={10}
                         placeholder='serving size'
                         value={serving}
                         onChange={setServing}
-                        size='xs'
+                        size='sm'
                         w='100%'
                         decimalScale={1}
+                        radius='xl'
                     />
                     <Group justify='space-between' w='100%'>
                         {mealTypes.map((item, index) => (
                             <Tooltip key={index} label={`Add to ${item.name}`}>
-                                <ActionIcon variant='default' onClick={() => handleClick(`${item.name}`)}>
+                                <ActionIcon
+                                    variant='light'
+                                    color='leaf.6'
+                                    radius='xl'
+                                    size='lg'
+                                    onClick={() => handleClick(`${item.name}`)}
+                                >
                                     {item.icon}
                                 </ActionIcon>
                             </Tooltip>

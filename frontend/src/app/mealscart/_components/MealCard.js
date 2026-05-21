@@ -1,18 +1,14 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react';
-import { useDisclosure, useElementSize, useClickOutside } from '@mantine/hooks';
-import { Stack, Group, Title, Button, 
-    TextInput, ActionIcon, Menu, Tooltip,
-    ScrollArea } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import { useElementSize, useClickOutside } from '@mantine/hooks';
+import { ActionIcon, Button, Group, Menu, ScrollArea, Stack, Text, TextInput, Title, Tooltip } from '@mantine/core';
 import FoodItem from './FoodItem';
-import { IconBasketHeart, IconAvocado, IconHeartFilled
-} from '@tabler/icons-react';
+import { IconBasketHeart, IconHeartFilled } from '@tabler/icons-react';
 import { notifications} from '@mantine/notifications';
-import { useNutritionalInfo } from '@/components/utility/hooks';
 import SavedMeals from './SavedMeals';
 import MacrosDisplay from '@/components/shared/MacrosDisplay';
-import { setSourceMapsEnabled } from 'process';
+import classes from "./MealCard.module.css";
 
 export default function MealCard({mealType, userId, foodArray, mealNutrition, isLoggedIn}) {
 
@@ -71,53 +67,72 @@ export default function MealCard({mealType, userId, foodArray, mealNutrition, is
       }, [height]);
     
     return(
-        <Stack align='center' justify='center' p={24} w='50vw' style={{gap:'24px'}}>
-            <Title size='h2'>{mealType.toUpperCase()}</Title>
-            <Stack>
-                <Title size='h4'>Macros</Title>
+        <Stack className={classes.card}>
+            <div className={classes.heading}>
+                <Text className={classes.eyebrow}>{mealType}</Text>
+                <Title order={2}>{mealType.toUpperCase()}</Title>
+            </div>
+            <div className={classes.macroCard}>
+                <Title order={4}>Meal macros</Title>
                 <MacrosDisplay data={mealNutrition} />
-            </Stack>
-            <Group w='100%'>
-                <Menu opened={opened}>
+            </div>
+            <div className={classes.toolbar}>
+                <Menu opened={opened} onChange={setOpened} shadow='md' width={520}>
                     <Menu.Target>
                         <Button
-                            variant='default'
+                            variant='light'
+                            color='leaf.6'
                             leftSection={<IconBasketHeart size={24}/>}
-                            onClick={() => setOpened(true)}
                             w='100%'
                             disabled={!isLoggedIn}
-                        >Load Meal</Button>
+                            radius='xl'
+                        >
+                            Load saved meal
+                        </Button>
                     </Menu.Target>
-                    <Menu.Dropdown ref={clickOutsideRef} w='500px'>
+                    <Menu.Dropdown ref={clickOutsideRef}>
                         <SavedMeals userId={userId} mealType={mealType} />
                     </Menu.Dropdown>
                 </Menu>
-            </Group>
-            <Group w='100%'>
+                <div className={`subtle-card ${classes.itemCount}`}>
+                    {`${foodArray.length} item${foodArray.length === 1 ? '' : 's'} in this meal`}
+                </div>
+            </div>
+            <div className={classes.listShell}>
                 <ScrollArea h={isScrollable ? 400 : "auto"} type="never" w='100%'>
-                    <Stack w='100%' ref={ref} >
-                        {foodArray.length > 0 && foodArray.map((foodData, index) => (
+                    <Stack w='100%' ref={ref} className={classes.listStack}>
+                        {foodArray.length > 0 ? foodArray.map((foodData, index) => (
                             <FoodItem key={index} itemData={foodData} meal={mealType}/>
-                        ))}
+                        )) : (
+                            <div className={classes.emptyState}>
+                                Add foods from the gallery to start building this meal.
+                            </div>
+                        )}
                     </Stack>
                 </ScrollArea>
-            </Group>
-            <Group w='100%'>
-                <TextInput style={{flex:1}}
+            </div>
+            <div className={classes.saveRow}>
+                <TextInput
+                    className={classes.saveInput}
                     placeholder='Enter a meal name'
                     onChange={(e) => setMealName(e.target.value)}
                     error={errorMessage}
                     maxLength={15}
+                    radius='xl'
                 />
                 <Tooltip label={isLoggedIn ? 'Save Meal' : 'Sign In to Save Meal'}>
                     <ActionIcon 
-                        disabled={mealName && foodArray.length > 0 ? false : true && !isLoggedIn} 
+                        disabled={!isLoggedIn || !mealName || foodArray.length === 0}
                         onClick={handleSave}
+                        variant='filled'
+                        color='leaf.6'
+                        radius='xl'
+                        size='xl'
                     >
                         <IconHeartFilled size={24} />
                     </ActionIcon>
                 </Tooltip>
-            </Group>
+            </div>
         </Stack>
     )
 }

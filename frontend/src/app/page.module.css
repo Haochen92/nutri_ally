@@ -1,41 +1,112 @@
 .page {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  position: relative;
+  align-items: stretch;
+  gap: 1.5rem;
+  min-height: calc(100svh - 8rem);
 }
 
 .main {
   flex-direction: column;
-  gap: 32px;
-  width:40svw;
-  height:50svh;
-  background-color: rgba(255,255,255,0.7);
+  justify-content: center;
+  gap: 1.5rem;
+  flex: 1 1 0;
+  padding: clamp(1.75rem, 3vw, 3rem);
   align-items: flex-start;
-  justify-content: center;
 }
 
-.headline{
-  gap:10px;
-  flex-direction:row;
+.headline {
+  align-items: center;
   justify-content: flex-start;
-  align-items:center;
-  padding: 12px;
 }
 
-.tagline{
-  gap:10px;
-  flex-direction:row;
+.tagline {
+  align-items: center;
   justify-content: center;
-  align-items:center;
-  padding: 12px;
 }
 
-.buttonContainer{
-  flex-direction: row;
-  padding: 12px;
-  gap: 8px;
+.copy {
+  max-width: 40rem;
+  color: var(--app-muted);
+  line-height: 1.75;
+}
+
+.buttonContainer {
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.visual {
+  position: relative;
+  flex: 0 1 32rem;
+  min-height: 34rem;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.imageFrame {
+  position: absolute;
+  inset: 1rem;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.imageFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 30, 22, 0.02), rgba(16, 30, 22, 0.38));
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.overlayCard {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.35rem;
+  border-radius: 22px;
+  background: rgba(255, 251, 244, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 36px rgba(16, 30, 22, 0.16);
+}
+
+.overlayEyebrow {
+  color: var(--app-primary-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.overlayCopy {
+  color: var(--app-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 64rem) {
+  .page {
+    flex-direction: column;
+  }
+
+  .visual {
+    min-height: 26rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .main {
+    padding: 1.4rem;
+  }
+
+  .overlayCard {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    padding: 1rem;
+  }
 }

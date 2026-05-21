@@ -1,0 +1,9 @@
+.tabsShell {
+  padding: 1rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 18rem;
+}

@@ -1,6 +1,10 @@
-.main{
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    margin: 16px;    
+.main {
+    gap: 1rem;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.copy {
+    max-width: 40rem;
+    color: var(--app-muted);
+    line-height: 1.7;
 }

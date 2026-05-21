@@ -2,10 +2,9 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from '@mantine/hooks';
-import { Group, Box, TextInput, ActionIcon, Menu, Select } from '@mantine/core';
-import { useToggle } from '@mantine/hooks';
+import { ActionIcon, Menu, Select, TextInput } from '@mantine/core';
 import { useState } from 'react';
-import { IconSearch, IconFilter, IconArrowsSort, IconPointer } from '@tabler/icons-react';
+import { IconArrowsSort, IconFilter, IconSearch } from '@tabler/icons-react';
 import classes from './SearchBar.module.css'
 
 const Filters = {
@@ -21,14 +20,15 @@ export default function SearchBar() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [sortValue, setSortValue] = useToggle();
-  const [menu, toggleMenu] = useToggle();
-  const [filter, setFilter] = useState("")
+  const [sortValue, setSortValue] = useState(searchParams.get('order') === 'true');
+  const [menu, setMenu] = useState(false);
+  const [filter, setFilter] = useState(searchParams.get('filter') || "")
 
   const toggleSort = () => {
-    setSortValue();
+    const nextValue = !sortValue;
+    setSortValue(nextValue);
     const params = new URLSearchParams(searchParams);
-    params.set('order', sortValue)
+    params.set('order', String(nextValue));
     router.replace(`${pathname}?${params.toString()}`)
   }
 
@@ -55,46 +55,55 @@ export default function SearchBar() {
     }
     router.replace(`${pathname}?${params.toString()}`);
     setFilter(value);
-    toggleMenu();
+    setMenu(false);
   }
 
   return (
-    <Group style={{width:'100%', padding: '16px'}}>
-        <Box>
-          <Menu opened={menu}>
+    <div className={classes.toolbar}>
+          <Menu opened={menu} onChange={setMenu} shadow='md' width={280}>
             <Menu.Target>
-              <ActionIcon variant='default' onClick={toggleMenu}>
+              <ActionIcon
+                variant='light'
+                color='leaf.6'
+                size='xl'
+                radius='xl'
+                onClick={() => setMenu((current) => !current)}
+              >
                   <IconFilter size={24}/>
               </ActionIcon>
             </Menu.Target>
             <Menu.Dropdown>
-              <Group>
                 <Select 
                   onChange={submitFilter}
-                  placeholder="Select Nutrients"
+                  placeholder="Filter by nutrient"
                   data={Filters.nutrients}
                   value={filter}
                   clearable
                   searchable
+                  radius='lg'
                 />
-              </Group>
             </Menu.Dropdown>
           </Menu>
-
-        </Box>
         <TextInput
             className={classes.searchBar}
             leftSection={<IconSearch size={24}/>}
-            defaultValue={''}
+            defaultValue={searchParams.get('search') || ''}
             onChange={handleChange}
-            placeholder="Food Name..."
+            placeholder="Search by food name"
+            radius='xl'
+            size='md'
         />
-        <ActionIcon variant='default' onClick={toggleSort}>
+        <ActionIcon
+          variant='light'
+          color={sortValue ? 'sand.6' : 'leaf.6'}
+          size='xl'
+          radius='xl'
+          onClick={toggleSort}
+        >
             <IconArrowsSort size={24}/>
         </ActionIcon>
-    </Group>
+    </div>
   );
 }
-
 
 

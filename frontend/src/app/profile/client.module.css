@@ -1,13 +1,35 @@
 .page {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
-.avatarContainer{
+.avatarContainer,
+.formCard {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.avatarContainer {
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items:center;
-    gap: 36px;
-    padding: 36px;
+    gap: 1.5rem;
+}
+
+.dropzone {
+    width: 100%;
+    min-height: 16rem;
+    border-radius: 22px;
+    background: rgba(245, 239, 229, 0.72);
+}
+
+.formStack {
+    gap: 1.25rem;
+}
+
+@media (max-width: 56rem) {
+    .page {
+        flex-direction: column;
+    }
 }

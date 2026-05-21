@@ -17,7 +17,6 @@ export const BasketProvider = ({children} : {children : React.ReactNode}) => {
       };
 
       const updateItem = ({ item, meal }: { item: MealItem; meal: keyof MealBasket }) => {
-        console.log("updating items")
         setBasket((prev) => ({
           ...prev,
           [meal]: prev[meal].map((p) =>

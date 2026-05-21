@@ -1,0 +1,84 @@
+.header {
+  background: rgba(247, 242, 232, 0.82);
+  border-bottom: 1px solid rgba(76, 98, 84, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.headerInner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-inline: clamp(0.85rem, 2.4vw, 1.75rem);
+}
+
+.brand {
+  min-width: fit-content;
+}
+
+.brandMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(75, 144, 104, 0.15), rgba(203, 152, 77, 0.22));
+  border: 1px solid rgba(76, 98, 84, 0.14);
+  box-shadow: 0 10px 24px rgba(41, 58, 47, 0.08);
+}
+
+.brandEyebrow {
+  color: var(--app-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.brandName {
+  color: var(--app-text);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.links {
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.links::-webkit-scrollbar {
+  display: none;
+}
+
+.navLink,
+.navLinkActive {
+  min-width: fit-content;
+}
+
+.avatar {
+  border: 2px solid rgba(76, 98, 84, 0.12);
+  box-shadow: 0 8px 20px rgba(41, 58, 47, 0.1);
+  cursor: pointer;
+}
+
+@media (max-width: 64rem) {
+  .brandCopy {
+    display: none;
+  }
+}
+
+@media (max-width: 48rem) {
+  .headerInner {
+    gap: 0.75rem;
+    padding-inline: 0.85rem;
+  }
+
+  .brandMark {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+}

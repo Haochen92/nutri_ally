@@ -1,13 +1,78 @@
-.page{
-    padding: 16px;
-    gap: 48px;
-    justify-content: center;
-    align-items: center;
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    gap: 1.5rem;
 }
 
-.nutriContainer{
+.imagePanel,
+.summaryPanel,
+.tableCard {
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.imageFrame {
+    position: relative;
+    min-height: 26rem;
+    overflow: hidden;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(75, 144, 104, 0.14), rgba(203, 152, 77, 0.18));
+}
+
+.image {
+    object-fit: contain;
+    padding: 1.5rem;
+}
+
+.summaryPanel {
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+}
+
+.title {
+    max-width: 22rem;
+}
+
+.copy,
+.quantity {
+    color: var(--app-muted);
+    line-height: 1.7;
+}
+
+.nutriContainer {
     justify-content: center;
-    align-items: center;
-    padding: 16px;
-    gap:12px;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.75rem;
+    border-radius: 22px;
+    background: var(--app-surface-strong);
+}
+
+.tableGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.tableCard {
+    display: grid;
+    gap: 1rem;
+}
+
+.collapseButton {
+    justify-content: flex-start;
+    padding: 0;
+}
+
+@media (max-width: 64rem) {
+    .hero,
+    .tableGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 48rem) {
+    .imageFrame {
+        min-height: 20rem;
+    }
 }

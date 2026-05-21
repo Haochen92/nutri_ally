@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { Stack, Title, Table, Collapse, Group, Button } from '@mantine/core';
+import { Button, Collapse, Group, Stack, Table, Text, Title } from '@mantine/core';
 import classes from './client.module.css'
 import { useDisclosure } from '@mantine/hooks';
 import { microNutrients, macroNutrients, getDailyRecommendedIntake } from '@/components/interface/constants';
@@ -35,48 +35,60 @@ export default function FoodInfoClient({foodData}) {
     } 
   
     return (
-      <Stack className={classes.page}>
-          <Image src={`/${foodData.image_url}`}
-            alt={foodData.product_name_main || "product Image"}
-            width={400}
-            height={400}
-          />
-        <Stack style={{alignItems:"center", justifyContent:"center"}}>
-          <Title size={20}>{foodData.product_name_main}</Title>
-          <Stack className={classes.nutriContainer}>
-              <Image 
-                src={`/nutri_icon/Nutri-score-${foodData.nutriscore_grade.toUpperCase()}.svg`}
-                width={200}
-                height={100}
-                alt={foodData.nutriscore_grade}
+      <section className="page-shell page-stack">
+        <div className={classes.hero}>
+          <div className={`${classes.imagePanel} section-card`}>
+            <div className={classes.imageFrame}>
+              <Image
+                src={`/${foodData.image_url}`}
+                alt={foodData.product_name_main || "product Image"}
+                fill
+                className={classes.image}
+                sizes="(max-width: 48rem) 100vw, 34rem"
               />
-          <Title size={20}>{`Serving Size: ${foodData.quantity}`}</Title>
-          </Stack>
-        </Stack>
-        <Stack w='100%'>
-          <Group style={{justifyContent:'flex-start', width:'100%'}}>
-            <Title size='h3'> Macro Nutrients</Title>
-          </Group>
-          <Table 
-            data={tableDataMacro}
-            tabularNums 
-            striped
-            withTableBorder
-            horizontalSpacing='xs' 
-            verticalSpacing='sm'
+            </div>
+          </div>
+          <div className={`${classes.summaryPanel} section-card`}>
+            <Text className="eyebrow">Food detail</Text>
+            <Title className={classes.title}>{foodData.product_name_main}</Title>
+            <Text className={classes.copy}>
+              Review this product’s nutrient breakdown and compare macro and micro nutrients
+              against default daily values before you add it to meals.
+            </Text>
+            <Stack className={classes.nutriContainer}>
+                <Image 
+                  src={`/nutri_icon/Nutri-score-${foodData.nutriscore_grade.toUpperCase()}.svg`}
+                  width={200}
+                  height={100}
+                  alt={foodData.nutriscore_grade}
+                />
+                <Text className={classes.quantity}>{`Serving Size: ${foodData.quantity}`}</Text>
+            </Stack>
+          </div>
+        </div>
+        <div className={classes.tableGrid}>
+          <div className={`section-card ${classes.tableCard}`}>
+            <Group justify='space-between' w='100%'>
+              <Title order={3}>Macro nutrients</Title>
+            </Group>
+            <Table 
+              data={tableDataMacro}
+              tabularNums 
+              striped
+              withTableBorder
+              horizontalSpacing='xs' 
+              verticalSpacing='sm'
             />
-        </Stack>
-        <Stack w='100%'>
+          </div>
+          <div className={`section-card ${classes.tableCard}`}>
           <Button 
             w='100%' 
             onClick={toggle}
-            variant='white'
-            style={{justifyContent:'flex-start', 
-                    display:'flex',
-                    padding:'0px',
-                    color:'black'}}
+            variant='subtle'
+            color='dark'
+            className={classes.collapseButton}
           >
-            <Title size='h3'>Micro Nutrients</Title>
+            <Title order={3}>Micro nutrients</Title>
           </Button>
           <Collapse in={opened}>
             <Table 
@@ -88,8 +100,9 @@ export default function FoodInfoClient({foodData}) {
               verticalSpacing='sm'
             />
           </Collapse>
-        </Stack>
-      </Stack>
+          </div>
+        </div>
+      </section>
     );
   }
   

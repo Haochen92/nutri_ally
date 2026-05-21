@@ -6,6 +6,7 @@ import { BasketProvider } from "@/components/context/BasketProvider";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Navbar from "@/components/navigation/NavBar";
 import { Notifications } from "@mantine/notifications";
+import { appTheme } from "./theme";
 import '@mantine/core/styles.css';
 import '@mantine/dropzone/styles.css';
 import '@mantine/carousel/styles.css';
@@ -38,7 +39,13 @@ export default function RootLayout({ children }) {
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <GoogleTagManager gtmId="GTM-TNCF4GJC"/>
           <SessionProvider>
-            <MantineProvider withGlobalStyles withNormalizeCSS withCssVariables={true}>
+            <MantineProvider
+              withGlobalStyles
+              withNormalizeCSS
+              withCssVariables={true}
+              defaultColorScheme="light"
+              theme={appTheme}
+            >
               <Notifications/>
               <BasketProvider>
                 <Navbar>
@@ -51,4 +58,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
