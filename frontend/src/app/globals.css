@@ -1,10 +1,8 @@
 :root {
+  /* Color tokens (unchanged) */
   --app-background: #f4efe5;
   --app-background-strong: #eadfce;
-  --app-surface: rgba(255, 251, 244, 0.88);
   --app-surface-strong: #fffdf8;
-  --app-surface-muted: rgba(245, 239, 229, 0.94);
-  --app-border: rgba(76, 98, 84, 0.18);
   --app-text: #213127;
   --app-muted: #667868;
   --app-primary: #4b9068;
@@ -12,7 +10,51 @@
   --app-accent: #cb984d;
   --app-accent-soft: #f1e6d1;
   --app-success-soft: #edf6f0;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-card: clamp(1.25rem, 2vw, 1.5rem);
+  --space-panel: clamp(1.5rem, 3vw, 2.5rem);
+
+  /* Border-radius (semantic) */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Borders (3 tiers) */
+  --border-subtle: 1px solid rgba(76, 98, 84, 0.06);
+  --border-default: 1px solid rgba(76, 98, 84, 0.12);
+  --border-strong: 1px solid rgba(76, 98, 84, 0.18);
+
+  /* Surfaces */
+  --surface-glass: rgba(255, 251, 244, 0.84);
+  --surface-glass-subtle: rgba(255, 251, 244, 0.72);
+  --surface-muted: rgba(245, 239, 229, 0.82);
+
+  /* Shadows */
+  --shadow-card: 0 16px 32px rgba(41, 58, 47, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(41, 58, 47, 0.12);
   --app-shadow: 0 22px 54px rgba(41, 58, 47, 0.12);
+
+  /* Typography tokens */
+  --font-eyebrow: 0.75rem;
+  --font-label: 0.875rem;
+  --tracking-eyebrow: 0.12em;
+
+  /* Legacy aliases (referenced by theme/colors.ts) */
+  --app-surface: var(--surface-glass);
+  --app-surface-muted: var(--surface-muted);
+  --app-border: rgba(76, 98, 84, 0.18);
 }
 
 html,
@@ -78,37 +120,37 @@ img {
 
 .app-shell-main {
   min-height: calc(100svh - 92px);
-  padding: calc(var(--app-shell-header-offset, 92px) + 1.5rem) 0 3rem;
+  padding: calc(var(--app-shell-header-offset, 92px) + var(--space-6)) 0 var(--space-12);
 }
 
 .page-shell {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1180px, calc(100% - var(--space-8)));
   margin: 0 auto;
 }
 
 .page-shell--wide {
-  width: min(1280px, calc(100% - 2rem));
+  width: min(1280px, calc(100% - var(--space-8)));
   margin: 0 auto;
 }
 
 .page-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .section-card {
-  background: var(--app-surface);
-  border: 1px solid var(--app-border);
-  border-radius: 28px;
-  box-shadow: var(--app-shadow);
+  background: var(--surface-glass);
+  border: var(--border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
   backdrop-filter: blur(14px);
 }
 
 .subtle-card {
-  background: var(--app-surface-muted);
-  border: 1px solid var(--app-border);
-  border-radius: 22px;
+  background: var(--surface-muted);
+  border: var(--border-default);
+  border-radius: var(--radius-lg);
 }
 
 .page-header {
@@ -116,28 +158,28 @@ img {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: var(--space-5);
 }
 
 .page-heading {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
   max-width: 52rem;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   width: fit-content;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
   background: var(--app-success-soft);
   color: var(--app-primary-strong);
-  font-size: 0.78rem;
+  font-size: var(--font-eyebrow);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
 }
 
@@ -158,17 +200,17 @@ img {
 .action-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .metric-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  background: rgba(255, 253, 248, 0.76);
-  border: 1px solid rgba(76, 98, 84, 0.12);
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass-subtle);
+  border: var(--border-default);
   color: var(--app-text);
   font-size: 0.95rem;
   font-weight: 600;
@@ -182,11 +224,11 @@ img {
 
 @media (max-width: 48rem) {
   .app-shell-main {
-    padding-top: calc(var(--app-shell-header-offset, 92px) + 1rem);
+    padding-top: calc(var(--app-shell-header-offset, 92px) + var(--space-4));
   }
 
   .page-shell,
   .page-shell--wide {
-    width: min(100%, calc(100% - 1rem));
+    width: min(100%, calc(100% - var(--space-4)));
   }
 }

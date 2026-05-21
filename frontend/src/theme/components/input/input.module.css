@@ -1,6 +1,6 @@
 .customFilled {
   background: var(--mantine-color-leaf-0);
-  border: 1px solid rgba(76, 98, 84, 0.14);
+  border: var(--border-default);
   transition: border-color 180ms ease, box-shadow 180ms ease;
 
   &:focus,

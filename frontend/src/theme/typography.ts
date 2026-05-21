@@ -51,6 +51,22 @@ const typographyTheme = createTheme({
     xl: '1.5',
   },
 
+  spacing: {
+    xs: rem(4),
+    sm: rem(8),
+    md: rem(16),
+    lg: rem(24),
+    xl: rem(32),
+  },
+
+  radius: {
+    xs: rem(8),
+    sm: rem(12),
+    md: rem(16),
+    lg: rem(20),
+    xl: rem(24),
+  },
+
   defaultRadius: 'md',
 
   shadows: {
