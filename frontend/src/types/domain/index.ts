@@ -61,10 +61,15 @@ export interface FoodItem {
   code: string;
   product_name_main: string;
   image_url: string;
-  energy_100g: number;
-  proteins_100g: number;
-  carbohydrates_100g: number;
-  fat_100g: number;
+  energy: number;
+  proteins: number;
+  carbohydrates: number;
+  fat: number;
+  nutriscore_grade: string;
+  nutriscore_score: number;
+  nova_group: number;
+  serving_size: string;
+  quantity: string;
   [key: string]: string | number;
 }
 
