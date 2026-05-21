@@ -20,25 +20,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-md);
   background: linear-gradient(145deg, rgba(75, 144, 104, 0.15), rgba(203, 152, 77, 0.22));
   border: var(--border-default);
   box-shadow: var(--shadow-card);
 }
 
-.brandEyebrow {
-  color: var(--app-muted);
-  font-size: var(--font-eyebrow);
-  font-weight: 700;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-}
-
 .brandName {
   color: var(--app-text);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: -0.04em;
 }
@@ -59,7 +51,7 @@
 }
 
 .avatar {
-  border: 2px solid rgba(76, 98, 84, 0.12);
+  border: 1.5px solid rgba(76, 98, 84, 0.12);
   box-shadow: var(--shadow-card);
   cursor: pointer;
 }
@@ -77,8 +69,8 @@
   }
 
   .brandMark {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--radius-sm);
   }
 }

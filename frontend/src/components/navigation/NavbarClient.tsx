@@ -26,7 +26,7 @@ function NavbarLink({ href, icon, label, active }: NavbarLinkProps) {
       variant={active ? 'filled' : 'subtle'}
       color={active ? 'leaf.6' : 'dark'}
       radius="xl"
-      size="md"
+      size="sm"
       className={active ? classes.navLinkActive : classes.navLink}
     >
       {label}
@@ -40,7 +40,7 @@ interface NavbarClientProps {
   imageBlob: Blob | null;
 }
 
-const ICON_SIZE = 36;
+const ICON_SIZE = 22;
 
 const linkMap = [
   { name: 'Meals Cart', route: '/mealscart', icon: <IconShoppingCart size={ICON_SIZE} /> },
@@ -68,17 +68,14 @@ export default function NavbarClient({ children, authenticated, imageBlob }: Nav
   }, [imageBlob]);
 
   return (
-    <AppShell header={{ height: 92, offset: true }} padding={0}>
+    <AppShell header={{ height: 64, offset: true }} padding={0}>
       <AppShell.Header className={classes.header}>
         <Group className={`page-shell ${classes.headerInner}`} wrap="nowrap" justify="space-between" w="100%">
           <Group gap="sm" wrap="nowrap" className={classes.brand}>
             <div className={classes.brandMark}>
-              <Image src="/favicon.webp" width={36} height={36} alt="favicon" />
+              <Image src="/favicon.webp" width={28} height={28} alt="favicon" />
             </div>
-            <Stack gap={0} className={classes.brandCopy}>
-              <Text className={classes.brandEyebrow}>Nutrition guidance</Text>
-              <Text className={classes.brandName}>Nutri Ally</Text>
-            </Stack>
+            <Text className={`${classes.brandName} ${classes.brandCopy}`}>Nutri Ally</Text>
           </Group>
           <Group gap="xs" wrap="nowrap" className={classes.links}>
             {linkMap.map((item) => (
@@ -98,7 +95,7 @@ export default function NavbarClient({ children, authenticated, imageBlob }: Nav
                   src={imageBlob && objectUrl ? objectUrl : '/default-avatar.svg'}
                   radius="md"
                   alt="my avatar"
-                  size={48}
+                  size={38}
                   onClick={() => setProfileOpen((current) => !current)}
                   className={classes.avatar}
                 />
@@ -107,15 +104,15 @@ export default function NavbarClient({ children, authenticated, imageBlob }: Nav
                 <Menu.Label>Profile Settings</Menu.Label>
                 {authenticated ? (
                   <Stack>
-                    <Menu.Item component={Link} href="/profile" leftSection={<IconUser size={24} />}>
+                    <Menu.Item component={Link} href="/profile" leftSection={<IconUser size={18} />}>
                       Profile Page
                     </Menu.Item>
-                    <Menu.Item onClick={appSignOut} leftSection={<IconLogout2 size={24} />}>
+                    <Menu.Item onClick={appSignOut} leftSection={<IconLogout2 size={18} />}>
                       Sign Out
                     </Menu.Item>
                   </Stack>
                 ) : (
-                  <Menu.Item component={Link} leftSection={<IconLogin2 size={24} />} href="/auth">
+                  <Menu.Item component={Link} leftSection={<IconLogin2 size={18} />} href="/auth">
                     Sign In
                   </Menu.Item>
                 )}
