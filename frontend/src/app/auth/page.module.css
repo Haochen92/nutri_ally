@@ -1,12 +1,12 @@
 .page {
-    gap: 1.5rem;
+    gap: var(--space-6);
     align-items: stretch;
 }
 
 .copyPanel,
 .formPanel {
     flex: 1 1 0;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    padding: var(--space-panel);
 }
 
 .title {
@@ -20,15 +20,15 @@
 
 .panelEyebrow {
     color: var(--app-primary-strong);
-    font-size: 0.75rem;
+    font-size: var(--font-eyebrow);
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
 }
 
 .emailForm {
     display: grid;
-    gap: 0.75rem;
+    gap: var(--space-3);
 }
 
 .button {
@@ -37,9 +37,9 @@
 }
 
 .ul {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:1rem;
+    gap: var(--space-4);
 }
 
 @media (max-width: 56rem) {
