@@ -35,10 +35,10 @@ export default function Homepage() {
             ))}
           </Group>
           <Flex className={classes.buttonContainer}>
-            <Button component={Link} href="/gallery" variant="filled" color="leaf.6" size="lg" radius="xl">
+            <Button component={Link} href="/gallery" variant="filled" color="leaf.6" size="md" radius="xl">
               Explore food gallery
             </Button>
-            <Button component={Link} href="/dashboard" variant="default" size="lg" radius="xl">
+            <Button component={Link} href="/dashboard" variant="default" size="md" radius="xl">
               Review nutrition targets
             </Button>
           </Flex>
