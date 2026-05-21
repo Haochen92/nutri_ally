@@ -23,13 +23,13 @@ export default function RecommendationClient({ foodData }: RecommendationClientP
       <Carousel
         slideSize="25%"
         withIndicators
-        slideGap="lg"
+        slideGap="md"
         align="start"
         w="100%"
         controlsOffset="md"
         slidesToScroll={2}
-        previousControlIcon={<IconArrowLeft size={48} />}
-        nextControlIcon={<IconArrowRight size={48} />}
+        previousControlIcon={<IconArrowLeft size={28} />}
+        nextControlIcon={<IconArrowRight size={28} />}
       >
         {foodData.slice(0, 20).map((item, index) => (
           <Carousel.Slide key={index} p="md">
