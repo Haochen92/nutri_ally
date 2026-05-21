@@ -1,16 +1,8 @@
 import { IconMeat, IconDroplet, IconFlame, IconBread } from '@tabler/icons-react';
 import { SimpleGrid, Group, Tooltip, Text } from '@mantine/core';
 
-interface MacrosData {
-  energy: number;
-  proteins: number;
-  carbohydrates: number;
-  fat: number;
-  [key: string]: string | number;
-}
-
 interface MacrosDisplayProps {
-  data: MacrosData;
+  data: Record<string, number | string>;
   layout?: 'grid' | 'row';
 }
 
@@ -30,7 +22,7 @@ export default function MacrosDisplay({ data, layout = 'grid' }: MacrosDisplayPr
         {item.icon}
       </Tooltip>
       <Text size="xs" fw={600}>
-        {(data[item.key] as number).toFixed(1)}{item.units}
+        {Number(data[item.key]).toFixed(1)}{item.units}
       </Text>
     </Group>
   ));
