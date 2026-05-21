@@ -73,6 +73,12 @@ export interface FoodItem {
   [key: string]: string | number;
 }
 
+export interface MacrosTarget {
+  proteins: number;
+  carbohydrates: number;
+  fats: number;
+}
+
 export interface UserProfile {
   gender: string;
   birthday: string;
