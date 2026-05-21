@@ -6,7 +6,7 @@ interface MacrosDisplayProps {
   layout?: 'grid' | 'row';
 }
 
-const ICON_SIZE = 16;
+const ICON_SIZE = 18;
 
 const macrosConfig = [
   { name: 'energy', key: 'energy', units: 'kcal', icon: <IconFlame color="#cf6a3d" size={ICON_SIZE} /> },
@@ -17,11 +17,11 @@ const macrosConfig = [
 
 export default function MacrosDisplay({ data, layout = 'grid' }: MacrosDisplayProps) {
   const items = macrosConfig.map((item) => (
-    <Group key={item.name} gap={6} wrap="nowrap">
+    <Group key={item.name} gap={8} wrap="nowrap">
       <Tooltip label={item.name}>
         {item.icon}
       </Tooltip>
-      <Text size="xs" fw={600}>
+      <Text size="sm" fw={600}>
         {Number(data[item.key]).toFixed(1)}{item.units}
       </Text>
     </Group>
