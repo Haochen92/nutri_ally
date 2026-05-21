@@ -10,6 +10,7 @@ import '@mantine/notifications/styles.css';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import { GoogleTagManager } from '@next/third-parties/google';
 import Providers from './Providers';
+import Navbar from '@/components/navigation/NavBar';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <GoogleTagManager gtmId="GTM-TNCF4GJC" />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar>{children}</Navbar>
+        </Providers>
       </body>
     </html>
   );
