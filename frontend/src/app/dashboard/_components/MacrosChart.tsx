@@ -22,13 +22,13 @@ export default function MacrosChart({ nutritionData }: MacrosChartProps) {
 
   return showChart ? (
     <PieChart
-      size={320}
+      size={260}
       data={data}
       tooltipDataSource="segment"
       withLabels
       labelsType="percent"
     />
   ) : (
-    <Skeleton circle height={320} />
+    <Skeleton circle height={260} />
   );
 }

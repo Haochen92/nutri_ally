@@ -99,14 +99,17 @@ export default function Dashboard({ savedMacros }: DashboardProps) {
                 Start in the food gallery, add servings into breakfast, lunch, or dinner,
                 and this dashboard will populate automatically.
               </Text>
-              <Button component={Link} size="lg" radius="xl" color="leaf.6" href="/gallery">
+              <Button component={Link} size="md" radius="xl" color="leaf.6" href="/gallery">
                 Explore foods
               </Button>
             </div>
           )}
         </>
       ) : (
-        <Loader color="leaf" size={48} />
+        <div className={classes.loaderState}>
+          <Loader color="leaf" size={36} />
+          <Text c="dimmed" size="sm">Loading nutrition data...</Text>
+        </div>
       )}
     </section>
   );

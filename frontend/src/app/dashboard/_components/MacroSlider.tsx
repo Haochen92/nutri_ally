@@ -13,7 +13,7 @@ interface NutrientSliderProps {
 function NutrientSlider({ label, value, setter }: NutrientSliderProps) {
   return (
     <Stack gap={6}>
-      <Text tt="capitalize" fw={700}>{label}</Text>
+      <Text tt="capitalize" fw={700} size="sm">{label}</Text>
       <Slider
         value={value}
         color="leaf.6"
@@ -21,7 +21,7 @@ function NutrientSlider({ label, value, setter }: NutrientSliderProps) {
         label={(sliderValue) => `${sliderValue}g`}
         min={0}
         max={400}
-        size="md"
+        size="sm"
       />
     </Stack>
   );
