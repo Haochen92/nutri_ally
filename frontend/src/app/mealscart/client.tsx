@@ -15,9 +15,9 @@ interface MealCartClientProps {
 }
 
 const mealsConfig: { name: MealType; icon: React.ReactNode }[] = [
-  { name: 'breakfast', icon: <IconMilk size={24} /> },
-  { name: 'lunch', icon: <IconBowlChopsticks size={24} /> },
-  { name: 'dinner', icon: <IconToolsKitchen2 size={24} /> },
+  { name: 'breakfast', icon: <IconMilk size={20} /> },
+  { name: 'lunch', icon: <IconBowlChopsticks size={20} /> },
+  { name: 'dinner', icon: <IconToolsKitchen2 size={20} /> },
 ];
 
 export default function MealCartClient({ userId, isLoggedIn }: MealCartClientProps) {
@@ -58,7 +58,7 @@ export default function MealCartClient({ userId, isLoggedIn }: MealCartClientPro
           <Tabs.List grow>
             {mealsConfig.map((meal) => (
               <Tabs.Tab key={meal.name} value={meal.name} leftSection={meal.icon}>
-                {meal.name.toUpperCase()}
+                {meal.name.charAt(0).toUpperCase() + meal.name.slice(1)}
               </Tabs.Tab>
             ))}
           </Tabs.List>

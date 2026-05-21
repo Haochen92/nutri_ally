@@ -1,16 +1,11 @@
 .card {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   width: 100%;
   padding: var(--space-card);
   border-radius: var(--radius-xl);
   background: var(--surface-glass);
   border: var(--border-default);
-}
-
-.heading {
-  display: grid;
-  gap: var(--space-2);
 }
 
 .eyebrow {

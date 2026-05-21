@@ -72,10 +72,7 @@ export default function MealCard({ mealType, userId, foodArray, mealNutrition, i
 
   return (
     <Stack className={classes.card}>
-      <div className={classes.heading}>
-        <Text className={classes.eyebrow}>{mealType}</Text>
-        <Title order={2}>{mealType.toUpperCase()}</Title>
-      </div>
+      <Title order={3}>{mealType.charAt(0).toUpperCase() + mealType.slice(1)}</Title>
       <div className={classes.macroCard}>
         <Title order={4}>Meal macros</Title>
         <MacrosDisplay data={mealNutrition} />
@@ -86,7 +83,7 @@ export default function MealCard({ mealType, userId, foodArray, mealNutrition, i
             <Button
               variant="light"
               color="leaf.6"
-              leftSection={<IconBasketHeart size={24} />}
+              leftSection={<IconBasketHeart size={20} />}
               w="100%"
               disabled={!isLoggedIn}
               radius="xl"
@@ -123,7 +120,7 @@ export default function MealCard({ mealType, userId, foodArray, mealNutrition, i
           placeholder="Enter a meal name"
           onChange={(e) => setMealName(e.target.value)}
           error={errorMessage}
-          maxLength={15}
+          maxLength={30}
           radius="xl"
         />
         <Tooltip label={isLoggedIn ? 'Save Meal' : 'Sign In to Save Meal'}>
@@ -133,9 +130,9 @@ export default function MealCard({ mealType, userId, foodArray, mealNutrition, i
             variant="filled"
             color="leaf.6"
             radius="xl"
-            size="xl"
+            size="lg"
           >
-            <IconHeartFilled size={24} />
+            <IconHeartFilled size={18} />
           </ActionIcon>
         </Tooltip>
       </div>

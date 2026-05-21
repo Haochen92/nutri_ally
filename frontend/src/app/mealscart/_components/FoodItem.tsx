@@ -34,15 +34,15 @@ export default function FoodItem({ itemData, meal }: FoodItemProps) {
           className={classes.thumb}
           src={`/${nutritionData.image_url}`}
           alt={nutritionData.product_name_main || 'product Image'}
-          width={60}
-          height={60}
+          width={48}
+          height={48}
         />
       </Link>
       <Stack className={classes.details}>
         <Group justify="space-between">
           <Text lineClamp={2} className={classes.title}>{itemData.product_name_main}</Text>
-          <ActionIcon variant="subtle" color="red" onClick={() => removeItem({ item: itemData, meal })}>
-            <IconX size={24} />
+          <ActionIcon variant="subtle" color="red" size="sm" onClick={() => removeItem({ item: itemData, meal })}>
+            <IconX size={16} />
           </ActionIcon>
         </Group>
         <Group justify="space-between" className={classes.actions}>
